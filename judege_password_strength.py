@@ -26,28 +26,36 @@ def check_alphabet_exist(password):
 
 
 def main():
-    password = input("请输入设置的密码：\n")
-    strength = 0
+    try_times = 5
 
-    if len(password) >= 8:
-        strength += 1
-    else:
-        print("密码的长度未超过8位！")
+    while try_times > 0:
+        password = input("请输入设置的密码：\n")
+        strength = 0
 
-    if check_number_exist(password):
-        strength += 1
-    else:
-        print("密码不包含数字！")
+        if len(password) >= 8:
+            strength += 1
+        else:
+            print("密码的长度未超过8位！")
 
-    if check_alphabet_exist(password):
-        strength += 1
-    else:
-        print("密码不包含字母！")
+        if check_number_exist(password):
+            strength += 1
+        else:
+            print("密码不包含数字！")
 
-    if strength == 3:
-        print("密码格式设置正确！")
-    else:
-        print("密码设置不符合规则！")
+        if check_alphabet_exist(password):
+            strength += 1
+        else:
+            print("密码不包含字母！")
+
+        if strength == 3:
+            print("密码格式设置正确！\n")
+            break
+        else:
+            print("密码设置不符合规则！\n")
+            try_times -= 1
+
+    if try_times == 0:
+        print("尝试次数过多，密码设置失败！")
 
 
 if __name__ == '__main__':
