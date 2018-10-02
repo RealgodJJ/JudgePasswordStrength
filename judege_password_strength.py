@@ -47,10 +47,34 @@ def main():
         else:
             print("密码不包含字母！")
 
-        file = open("password.txt", "r")
-        file.read()
         file = open("password.txt", "a")
         file.write("密码：{}   强度：{}\n".format(password, strength))
+        file.close()
+
+        # style 1
+        print("====== Style 1 ======")
+        file = open("password.txt", "r")
+        content = file.read()
+        print(content)
+        file.close()
+
+        # style 2
+        # print("====== Style 2 ======")
+        # file = open("password.txt", "r")
+        # line = file.readline()
+        # print(line)
+        # line = file.readline()
+        # print(line)
+        # line = file.readline()
+        # print(line)
+        # file.close()
+
+        # style 3
+        print("====== Style 3 ======")
+        file = open("password.txt", "r")
+        for item, line in enumerate(file.readlines()):
+            print("{}.{}".format(item + 1, line))
+        file.close()
 
         if strength == 3:
             print("密码格式设置正确！\n")
