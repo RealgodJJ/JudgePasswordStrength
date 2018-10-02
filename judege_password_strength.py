@@ -6,18 +6,24 @@
     date: 2018/10/2
 """
 
+
 def check_number_exist(password):
+    has_number = False
     for value in password:
         if value.isnumeric():
-            return True
-    return False
+            has_number = True
+            break
+    return has_number
 
 
 def check_alphabet_exist(password):
+    has_alphabet = False
     for value in password:
         if value.isalpha():
-            return True
-    return False
+            has_alphabet = True
+            break
+    return has_alphabet
+
 
 def main():
     password = input("请输入设置的密码：\n")
@@ -42,6 +48,7 @@ def main():
         print("密码格式设置正确！")
     else:
         print("密码设置不符合规则！")
+
 
 if __name__ == '__main__':
     main()
